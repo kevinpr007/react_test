@@ -8,13 +8,13 @@
   },
   "homepage": "https://kevinpr007.github.io/react_test",
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "react-redux": "4.4.5",
     "react-router": "4.0.0-alpha.5",
-    "redux": "^3.6.0",
-    "redux-devtools-extension": "^2.13.0",
-    "redux-thunk": "^2.2.0"
+    "redux": "3.6.0",
+    "redux-devtools-extension": "1.0.0",
+    "redux-thunk": "2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
