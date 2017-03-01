@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-// import GamesList from './GamesList'
+import { connect } from 'react-redux'
+import GamesList from './GamesList'
 
 class GamesPage extends React.Component {
     render() {
@@ -8,21 +8,21 @@ class GamesPage extends React.Component {
             <div>
                 <h1>Game List</h1>
 
-                {/*<GamesList games={this.prop.games} />*/}
+                <GamesList games={this.props.games} />
             </div>
         )
     }
 }
 
-// GamesPage.prototype = {
-//     games: React.PropTypes.array.isRequired
-// }
+GamesPage.propTypes = {
+    games: React.PropTypes.array.isRequired
+}
 
-// function mapStateToProps(state) {
-//     return {
-//         games: state.games
-//     }
-// }
+function mapStateToProps(state) {
+    return {
+        games: state.games
+    }
+}
 
-// export default connect(mapStateToProps)(GamesPage);
-export default GamesPage
+export default connect(mapStateToProps)(GamesPage);
+// export default GamesPage;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Link, Match } from 'react-router'
+import { Link, Route } from 'react-router-dom'
 import GamesPage from './GamesPage'
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
           <Link to="games">games</Link>
         </p>
 
-        <Match pattern="/games" Component={GamesPage} />
+        <Route exact path="/games" component={GamesPage} />
 
       </div>
     );

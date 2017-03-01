@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function GamesList(games) {
-    // => ?????Í
+export default function GamesList({ games }) {
+
     const emptyMessage = (
         <p>There are no games yet in your collection.</p>
     )
