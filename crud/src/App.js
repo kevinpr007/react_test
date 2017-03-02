@@ -5,6 +5,12 @@ import { Link, Route } from 'react-router-dom'
 import GamesPage from './GamesPage'
 import GameForm from './GameForm'
 
+const ActiveLink = ({label, to, activeOnlyWhenExact}) => (
+  <Route path={to} exact={activeOnlyWhenExact} children={({match}) => (
+    <Link className={match ? 'active item' : 'item'} to={to}>{label}</Link>
+  )} />
+)
+
 class App extends Component {
   render() {
     return (
@@ -19,13 +25,15 @@ class App extends Component {
           </p>*/}
 
 
-          <Link className="item" to="/">Home</Link>
-          <Link className="item" to="/games">Games</Link>
-          <Link className="item" to="/games/new">Add New Game</Link>
+          <ActiveLink activeOnlyWhenExact to="/" label="Home" />
+          <ActiveLink activeOnlyWhenExact to="/games" label="Games" />
+          <ActiveLink activeOnlyWhenExact to="/games/new" label="Add New Game" />
 
         </div>
+
         <Route exact path="/games" component={GamesPage} />
-        <Route exact path="/games/new" component={GameForm} />
+        <Route path="/games/new" component={GameForm} />
+
       </div>
     );
   }
