@@ -9,7 +9,7 @@
   "homepage": "https://kevinpr007.github.io/react_test",
   "proxy": "http://localhost:8080",
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "2.2.5",
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",

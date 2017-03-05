@@ -17,15 +17,18 @@ function validate(data) {
 mongodb.MongoClient.connect(dbUrl, function (err, db) {
 
     app.get('/api/games', (req, res) => {
-        db.collection('games').find({}).toArray((err, games) => {
-            res.json({ games })
-        })
+        //TODO: This is to test background sync
+        setTimeout(() => {
+            db.collection('games').find({}).toArray((err, games) => {
+                res.json({ games })
+            })
+        }, 2000)
     })
 
     app.post('/api/games', (req, res) => {
-        const {errors, isValid} = validate(req.body)
+        const { errors, isValid } = validate(req.body)
         if (isValid) {
-            const {title, cover} = req.body
+            const { title, cover } = req.body
             db.collection('games').insert({ title, cover }, (err, result) => {
                 if (err) {
                     res.status(500).addListener.json({ errors: { global: "Something went wrong" } })

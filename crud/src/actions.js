@@ -1,4 +1,5 @@
 export const SET_GAMES = 'SET_GAMES'
+export const ADD_GAME = 'ADD_GAME'
 
 export function setGames(games) {
     return {
@@ -8,8 +9,10 @@ export function setGames(games) {
 }
 
 function handleResponse(response) {
+
     if (response.ok) {
-        return response
+        //TODO: Always be carefull with this
+        return response.json()
     }
     else {
         let error = new Error(response.statusText)
@@ -18,8 +21,16 @@ function handleResponse(response) {
     }
 }
 
+export function addGame(game) {
+    return {
+        type: ADD_GAME,
+        game
+    }
+}
+
 export function saveGame(data) {
     return dispatch => {
+
         return fetch('/api/games', {
             method: "post",
             body: JSON.stringify(data),
@@ -27,6 +38,7 @@ export function saveGame(data) {
                 "Content-Type": "application/json"
             }
         }).then(handleResponse)
+            .then(data => dispatch(addGame(data.game)))
     }
 }
 

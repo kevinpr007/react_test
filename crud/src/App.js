@@ -5,8 +5,8 @@ import { Link, Route } from 'react-router-dom'
 import GamesPage from './GamesPage'
 import GameForm from './GameForm'
 
-const ActiveLink = ({label, to, activeOnlyWhenExact}) => (
-  <Route path={to} exact={activeOnlyWhenExact} children={({match}) => (
+const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
+  <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
     <Link className={match ? 'active item' : 'item'} to={to}>{label}</Link>
   )} />
 )

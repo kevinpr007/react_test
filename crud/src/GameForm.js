@@ -40,11 +40,11 @@ class GameForm extends Component {
         // const isValid = Object.keys(errors).length === 0
 
         if (true) {
-            const {title, cover} = this.state
+            const { title, cover } = this.state
             this.setState({ loading: true })
             this.props.saveGame({ title, cover }).then(
                 () => { this.setState({ done: true }) },
-                (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
+                (err) => err.response.json().then(({ errors }) => this.setState({ errors, loading: false }))
             )
         }
 
