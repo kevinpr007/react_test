@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { saveGame } from './actions'
+
 
 class GameForm extends Component {
 
@@ -9,7 +11,8 @@ class GameForm extends Component {
         title: '',
         cover: '',
         errors: {},
-        loading: false
+        loading: false,
+        done: false
     }
 
     handleChange = (e) => {
@@ -30,27 +33,26 @@ class GameForm extends Component {
         e.preventDefault()
 
         //validations
-        let errors = {}
+        // let errors = {}
+        // if (this.state.title === '') errors.title = "can't be empty"
+        // if (this.state.cover === '') errors.cover = "can't be empty"
+        // this.setState({ errors })
+        // const isValid = Object.keys(errors).length === 0
 
-        if (this.state.title === '') errors.title = "can't be empty"
-        if (this.state.cover === '') errors.cover = "can't be empty"
-        this.setState({ errors })
-
-        const isValid = Object.keys(errors).length === 0
-
-        if (isValid) {
+        if (true) {
             const {title, cover} = this.state
             this.setState({ loading: true })
             this.props.saveGame({ title, cover }).then(
-                () => { },
+                () => { this.setState({ done: true }) },
                 (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
             )
         }
 
     }
 
+
     render() {
-        return (
+        const form = (
             <form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
                 <h1>Add New Game</h1>
 
@@ -84,7 +86,11 @@ class GameForm extends Component {
                     <button className="ui primary button">Save</button>
                 </div>
             </form>
-
+        )
+        return (
+            <div>
+                {this.state.done ? <Redirect to="/games" /> : form}
+            </div>
         );
     }
 }
